@@ -2,7 +2,7 @@ class PortfoliosController < ApplicationController
   
   
   def index
-    @portfolio_items = Portfolio.ruby_on_rails_portfolio_items
+    @portfolio_items = Portfolio.all
   end
   
   def angular
@@ -14,7 +14,8 @@ class PortfoliosController < ApplicationController
     @portfolio_item = Portfolio.new
   end
   def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, :main_image, :thumb_image))
+    
     respond_to do |format|
       if @portfolio_item.save
         format.html { redirect_to portfolios_path, notice: 'Your portfolio item is now live.' }
