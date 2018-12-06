@@ -3,8 +3,6 @@ class BlogsController < ApplicationController
   layout "blog"
   
   #All means everyone, user is just a regular signed in user and site_admin is the master
-  access all: [:show, :index], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
-  
 
   def index
     @blogs = Blog.all
