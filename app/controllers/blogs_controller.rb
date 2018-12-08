@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
   #All means everyone, user is just a regular signed in user and site_admin is the master
 
   def index
-    @blogs = Blog.all
+    @blogs = Blog.page(params[:page]).per(5)
     @page_title = "Blog Portfolio - AC"
   end
 
